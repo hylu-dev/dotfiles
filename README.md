@@ -12,7 +12,7 @@ Follow these steps to set up the dotfiles on a new machine:
 
 1.  **Clone the repository as a bare repository:**
     ```bash
-    git clone --bare [https://github.com/YourUsername/dotfiles.git](https://github.com/YourUsername/dotfiles.git) $HOME/.dotfiles
+    git clone --bare https://github.com/YourUsername/dotfiles.git](https://github.com/YourUsername/dotfiles.git) $HOME/.dotfiles
     ```
 
 2.  **Create a shell alias for managing the dotfiles:**
