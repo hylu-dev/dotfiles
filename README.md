@@ -1,12 +1,12 @@
-### My Dotfiles
+# hylu-dev dotfiles
 
-This repository contains my personal configuration files (dotfiles) for a Pop!\_OS setup, managed using a bare Git repository.
+This repository contains my personal configuration files (dotfiles), managed using a bare Git repository.
 
-### Requirements
+## Requirements
 
 * Git installed on your system.
 
-### Installation
+## Installation
 
 Follow these steps to set up the dotfiles on a new machine:
 
@@ -15,29 +15,39 @@ Follow these steps to set up the dotfiles on a new machine:
     git clone --bare https://github.com/hylu-dev/dotfiles.git $HOME/.dotfiles
     ```
 
-2.  **Create a shell alias for managing the dotfiles:**
-    Add the following line to your `~/.bashrc` or `~/.zshrc` file:
+2.  **Temporarily create a shell alias for managing the dotfiles:**
     ```bash
     alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
     ```
-    Then, apply the changes: `source ~/.bashrc`
+    - This will later be stowed into `~/.bashrc`
 
 3.  **Checkout the dotfiles to your home directory:**
     ```bash
-    dotfiles checkout
-    ```
-    * If you get an error about files already existing, back them up first:
-        ```bash
-        mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
-        dotfiles checkout
-        ```
+    # Try to checkout dotfiles, backing up existing files if necessary
+    if ! dotfiles checkout; then
+      echo "Backing up pre-existing dotfiles..."
+      mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+      dotfiles checkout
+    fi
 
 4.  **Prevent untracked files from showing up:**
     ```bash
     dotfiles config --local status.showUntrackedFiles no
     ```
+### Quick Run
 
-### Usage
+```bash
+git clone --bare https://github.com/hylu-dev/dotfiles.git $HOME/.dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+if ! dotfiles checkout; then
+  echo "Backing up pre-existing dotfiles..."
+  mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+  dotfiles checkout
+fi
+dotfiles config --local status.showUntrackedFiles no
+```
+
+## Usage
 
 Use the `dotfiles` alias just like a normal `git` command to manage your files:
 
