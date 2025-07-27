@@ -75,7 +75,9 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # oh-my-posh configuration
-eval "$(oh-my-posh init bash --config catppuccin)"
+if command -v oh-my-posh &>/dev/null; then
+  eval "$(oh-my-posh init bash --config catppuccin)"
+fi
 
 # nvim path
 export PATH="$PATH:/opt/nvim/"
