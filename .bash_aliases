@@ -15,3 +15,6 @@ alias pop='pop-upgrade release update'
 
 # alias for bat
 alias bat='batcat'
+
+# clipboard
+alias clip='xclip -selection clipboard <'
