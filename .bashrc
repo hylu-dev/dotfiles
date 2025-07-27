@@ -70,7 +70,9 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # Add cargo binaries to PATH
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # oh-my-posh configuration
 eval "$(oh-my-posh init bash --config catppuccin)"

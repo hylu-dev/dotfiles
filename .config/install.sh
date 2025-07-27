@@ -5,6 +5,7 @@ set -e
 echo "🔧 Installing Linux utilities..."
 
 sudo apt update
+
 sudo apt install -y \
   curl \
   git \
@@ -13,7 +14,12 @@ sudo apt install -y \
   tldr \
   fastfetch \
   neovim \
-  fzf \
-  stow
+  fzf
+
+# Fun utilities
+sudo apt install -y \
+  cowsay \
+  fortune \
+  cmatrix
 
 echo "✅ Packages installed."
