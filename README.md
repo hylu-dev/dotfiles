@@ -27,14 +27,15 @@ Follow these steps to set up the dotfiles on a new machine:
 
 3.  **Checkout the dotfiles to your home directory:**
     ```bash
-    # Try to checkout dotfiles, backing up existing files if necessary
-    if ! dotfiles checkout; then
-      echo "Backing up pre-existing dotfiles..."
-      mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
-      dotfiles checkout
-    fi
+    # [Optionally backup existing dotfiles]
+    mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/`
+    ```
+    
+    ```bash
+    dotfiles checkout
+    ```
 
-4.  **Prevent untracked files from showing up:**
+5.  **Prevent untracked files from showing up:**
     ```bash
     dotfiles config --local status.showUntrackedFiles no
     ```
@@ -43,11 +44,7 @@ Follow these steps to set up the dotfiles on a new machine:
 ```bash
 git clone --bare https://github.com/hylu-dev/dotfiles.git $HOME/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-if ! dotfiles checkout; then
-  echo "Backing up pre-existing dotfiles..."
-  mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
-  dotfiles checkout
-fi
+dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```
 
