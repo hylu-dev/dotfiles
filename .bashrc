@@ -76,7 +76,7 @@ fi
 
 # oh-my-posh configuration
 if command -v oh-my-posh &>/dev/null; then
-  eval "$(oh-my-posh init bash --config catppuccin)"
+  eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/theme.omp.json)"
 fi
 
 # nvim path
@@ -84,3 +84,7 @@ export PATH="$PATH:/opt/nvim/"
 
 # Run fastfetch on terminal start
 fastfetch
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
