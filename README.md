@@ -23,7 +23,7 @@ Follow these steps to set up the dotfiles on a new machine:
     ```bash
     alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
     ```
-    - This will later be stowed into `~/.bashrc`
+    - This will later be stored in `~/.bashrc`
 
 3.  **Checkout the dotfiles to your home directory:**
     ```bash
