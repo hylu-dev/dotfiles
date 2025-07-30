@@ -82,6 +82,9 @@ fi
 # nvim path
 export PATH="$PATH:/opt/nvim/"
 
+# zoxide startup
+eval "$(zoxide init bash)" # or zsh, fish, etc.
+
 # Run fastfetch on terminal start
 fastfetch
 

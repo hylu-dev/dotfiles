@@ -21,3 +21,12 @@ alias bat='batcat'
 
 # clipboard
 alias clip='xclip -selection clipboard <'
+
+# zoxide alias
+cd() {
+  if [ -z "$1" ]; then # If no argument is provided
+    cd ~                # Go to the home directory
+  else
+    z "$@"              # Otherwise, use zoxide's 'z' command
+  fi
+}

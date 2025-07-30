@@ -27,6 +27,7 @@ PACKAGES=(
   bat
   eza
   tldr
+  zoxide
   fastfetch
   fzf
   xclip
