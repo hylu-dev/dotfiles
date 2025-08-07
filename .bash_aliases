@@ -22,6 +22,9 @@ alias bat='batcat'
 # clipboard
 alias clip='xclip -selection clipboard <'
 
+# df use gigabytes
+alias df='df -BG'
+
 # zoxide alias
 cd() {
   if [ -z "$1" ]; then # If no argument is provided
