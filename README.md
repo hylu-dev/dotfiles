@@ -28,7 +28,7 @@ Follow these steps to set up the dotfiles on a new machine:
 3.  **Checkout the dotfiles to your home directory:**
     ```bash
     # [Optionally backup existing dotfiles]
-    mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/`
+    mkdir -p .dotfiles-backup && dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/
     ```
     
     ```bash
