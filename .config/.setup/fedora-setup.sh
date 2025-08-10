@@ -35,16 +35,6 @@ case "$confirm" in
       echo "'ibt=off' parameter already set in GRUB."
     fi
 
-    echo "⚙️ Configuring system to suspend to RAM..."
-    LOGIND_CONF_D="/etc/systemd/logind.conf.d/custom.conf"
-    if [ ! -f "$LOGIND_CONF_D" ]; then
-      echo "Setting 'HandleLidSwitch' to suspend."
-      echo -e "[Login]\nHandleLidSwitch=suspend\nHandleLidSwitchDocked=suspend" | sudo tee "$LOGIND_CONF_D" > /dev/null
-      sudo systemctl restart systemd-logind
-    else
-      echo "Systemd suspend settings already configured."
-    fi
-
     echo "📦 Enabling RPM Fusion repositories..."
     sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
     sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
