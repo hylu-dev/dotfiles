@@ -38,6 +38,8 @@ case "$confirm" in
       cmatrix
     )
 
+    dnf copr enable alternateved/
+
     echo "📦 Installing core utilities and development tools..."
     for package in "${PACKAGES[@]}"; do
       echo "📦 Installing '$package'..."
