@@ -1,95 +1,105 @@
-/* ~/.config/waybar/style.css */
-/*
- * This CSS file styles the Waybar for a clean, modern look.
- * It uses a dark theme with rounded corners and a few subtle colors.
- * The Font Awesome Free font is used for the icons. You may need to
- * install a font that provides these glyphs.
- */
+/* A Catppuccin-like (Frappe) theme with rounded corners and a transparent background. */
 
-/* General Waybar style */
+/* Catppuccin Frappe colors */
+@define-color rosewater #f2d5cf;
+@define-color flamingo #eebebe;
+@define-color mauve #c6a0f6;
+@define-color text #c6d0f5;
+@define-color overlay0 #7b85a3;
+@define-color base #303446;
+@define-color mantle #292c3c;
+@define-color crust #232634;
+@define-color blue #8caaee;
+
 * {
-    border: none;
-    font-family: Inter, Font Awesome;
+    /* Set a nice, clear font */
+    font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 14px;
-    font-weight: normal;
-    min-height: 20px;
+    font-weight: bold;
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 30, 0.85);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    /* Overall bar style */
+    background: none; /* No background */
+    border: none;    /* No border */
+    margin: 8px; /* Adds space around the bar */
+    color: @text;
 }
 
-/* Module styling */
+/* Style the individual modules */
+#workspaces {
+    background-color: @mantle; /* Added a background for the block */
+    border-radius: 12px;
+    padding: 0 4px;
+    margin: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 8px;
     background-color: transparent;
-    color: #ffffff;
-    border-radius: 0;
-}
-
-#workspaces button.active {
-    background-color: #5d5d5d;
-    color: #ffffff;
+    color: @rosewater;
+    border-bottom: 2px solid transparent; /* subtle underline for active */
+    transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
-    background-color: #3b3b3b;
-    box-shadow: inherit;
-    text-shadow: inherit;
+    color: @flamingo;
+    border-bottom: 2px solid @flamingo;
 }
 
-#mode {
-    background-color: #64727d;
-    padding: 0 10px;
-    color: #ffffff;
-    border-radius: 5px;
-    margin: 0 5px;
+#workspaces button.active {
+    color: @flamingo;
+    border-bottom: 2px solid @mauve;
 }
 
+#window,
 #clock,
-#battery,
-#cpu,
-#memory,
 #pulseaudio,
 #network,
+#battery,
+#temperature,
+#memory,
 #tray {
+    background-color: @mantle;
+    border-radius: 12px; /* Rounded corners for modules */
     padding: 0 10px;
-    margin: 0 5px;
-    background-color: #2e2e2e;
-    border-radius: 5px;
+    margin: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Specific module colors */
+#window {
+    background-color: @base;
+    color: @flamingo;
+    border-radius: 12px;
+}
+
 #clock {
-    color: #8c8c8c;
-}
-
-#battery {
-    color: #4CAF50; /* Green */
-}
-#battery.charging {
-    color: #FFC107; /* Amber */
-}
-#battery.critical {
-    color: #F44336; /* Red */
-}
-
-#cpu {
-    color: #2196F3; /* Blue */
-}
-
-#memory {
-    color: #9C27B0; /* Purple */
+    background-color: @mantle;
+    color: @blue;
 }
 
 #pulseaudio {
-    color: #E91E63; /* Pink */
+    color: @rosewater;
 }
 
 #network {
-    color: #00BCD4; /* Cyan */
+    color: @mauve;
+}
+
+#battery {
+    color: @flamingo;
+}
+
+#temperature {
+    color: @rosewater;
+}
+
+#memory {
+    color: @blue;
+}
+
+#tray {
+    color: @mauve;
 }
 

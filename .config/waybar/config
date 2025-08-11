@@ -1,79 +1,81 @@
-// ~/.config/waybar/config
-//
-// This JSON file defines the modules that will be displayed on the Waybar
-// and their arrangement. This updated version places the bar at the top.
 {
-    "layer": "top",
-    "position": "top",
+    // Waybar configuration file in JSON format.
+    // Updated for Sway and to be positioned at the top of the screen.
+    "layer": "top", // Display on top layer
+    "position": "top", // Position the bar at the top of the screen
+    "mod": "dock", // "dock" prevents the bar from being pushed down by other windows
+    "height": 36, // Set a fixed height for the bar
+    "passthrough": false, // Allow mouse clicks to pass through the bar to the window below
+
+    // Define the modules that will appear on the left, center, and right of the bar.
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode"
+        "sway/workspaces"
     ],
     "modules-center": [
-        "custom/separator",
-        "clock"
+        "sway/window"
     ],
     "modules-right": [
-        "custom/separator",
+        "tray",
         "pulseaudio",
         "network",
-        "cpu",
-        "memory",
         "battery",
-        "tray"
+        "memory"
     ],
+
+    // Define module-specific settings for Sway.
     "sway/workspaces": {
-        "format": " {icon}",
-        "on-click": "activate"
-    },
-    "sway/mode": {
-        "format": "<b>{}</b>"
-    },
-    "custom/separator": {
-        "format": " | ",
-        "tooltip": false
-    },
-    "clock": {
-        "tooltip-format": "<small>{:%Y-%m-%d}</small>",
-        "format-alt": "{:%a, %b %d %I:%M %p}",
-        "format": "{:%I:%M %p}"
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": " Muted",
+        "format": " {icon} ",
         "format-icons": {
-            "default": ["", ""]
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "active": "" // A more subtle active indicator
         },
-        "tooltip-format": "{volume}%"
+        "on-click": "activate" // Click to switch workspaces
     },
-    "battery": {
-        "states": {
-            "good": 90,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": true
-    },
-    "memory": {
-        "format": " {used}GiB",
-        "tooltip": true
-    },
-    "network": {
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": " {ifname}",
-        "format-disconnected": "⚠ Disconnected"
+    "sway/window": {
+        "format": " {title} "
     },
     "tray": {
-        "icon-size": 21,
-        "spacing": 10
+        "icon-size": 18,
+        "spacing": 8
+    },
+    "pulseaudio": {
+        "format": " {icon} {volume}% ",
+        "format-muted": "  ",
+        "format-icons": {
+            "default": "",
+            "headset": ""
+        },
+        "scroll-step": 1,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", // Toggles mute on click
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+", // Adjusts volume up on scroll
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", // Adjusts volume down on scroll
+        "on-click-right": "pavucontrol" // Opens a graphical mixer on right-click
+    },
+    "network": {
+        "format-wifi": " {icon} {signalStrength}% ",
+        "format-ethernet": " {icon} {ipaddr} ",
+        "format-disconnected": " 睊 ",
+        "tooltip-format-wifi": "Wireless: {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "Ethernet: {ipaddr}",
+        "format-icons": ["直", "直", "直", "直", "直"]
+    },
+    "battery": {
+        "format": " {icon} {capacity}% ",
+        "format-charging": "  {capacity}% ",
+        "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+        "tooltip": true
+    },
+    "clock": {
+        "format": " {:%H:%M:%S} ",
+        "tooltip-format": "<big>{:%Y %B %d}</big>\n<small>{:%A}</small>"
+    },
+    "memory": {
+        "format": " {icon} {percentage}% ",
+        "format-icons": [""]
     }
 }
 
