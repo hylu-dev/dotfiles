@@ -7,8 +7,10 @@ This repository contains my personal configuration files (dotfiles), managed usi
 - Git installed on your system.
 - Recommend installing GCM.
     - May need a reboot after installing.
-    - `git config --global credential.credentialStore manager` 
-    - `git config --global credential.credentialStore secretservice` 
+    ```bash
+    git config --global credential.helper manager
+    git config --global credential.credentialStore secretservice
+    ```
 
 ## Installation
 
