@@ -28,7 +28,7 @@ window#waybar {
 
 /* Style the individual modules */
 #workspaces {
-    background-color: @mantle; /* Added a background for the block */
+    background-color: @mantle;
     border-radius: 12px;
     padding: 0 4px;
     margin: 4px;
@@ -36,7 +36,10 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px; /* Or a value you prefer */
+    padding-right: 8px; /* Or a value you prefer */
     background-color: transparent;
     color: @rosewater;
     border-bottom: 2px solid transparent; /* subtle underline for active */

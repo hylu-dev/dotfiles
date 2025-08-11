@@ -19,40 +19,44 @@ fi
 
 read -r -p "This script will perform system-level updates and configuration changes. Do you want to continue? (y/n): " confirm
 case "$confirm" in
-  [yY])
-    echo "🔧 Starting Fedora basic system setup..."
+[yY])
+  echo "🔧 Starting Fedora basic system setup..."
 
-    echo "🔄 Updating system and packages..."
-    sudo dnf upgrade --refresh -y
+  echo "🔄 Updating system and packages..."
+  sudo dnf upgrade --refresh -y
 
-    echo "⚙️ Fixing lid power issue (black screen on wake)..."
-    GRUB_CONFIG="/etc/default/grub"
-    if ! grep -q "ibt=off" "$GRUB_CONFIG"; then
-      echo "Adding 'ibt=off' to GRUB_CMDLINE_LINUX_DEFAULT."
-      sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 ibt=off"/' "$GRUB_CONFIG"
-      sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-    else
-      echo "'ibt=off' parameter already set in GRUB."
-    fi
+  echo "⚙️ Fixing lid power issue (black screen on wake)..."
+  GRUB_CONFIG="/etc/default/grub"
+  if ! grep -q "ibt=off" "$GRUB_CONFIG"; then
+    echo "Adding 'ibt=off' to GRUB_CMDLINE_LINUX_DEFAULT."
+    sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 ibt=off"/' "$GRUB_CONFIG"
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+  else
+    echo "'ibt=off' parameter already set in GRUB."
+  fi
 
-    echo "📦 Enabling RPM Fusion repositories..."
-    sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-    sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  echo "Setting dark mode preference for GTK"
+  gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-    echo "🎶 Installing multimedia codecs..."
-    sudo dnf group install -y multimedia
+  echo "📦 Enabling RPM Fusion repositories..."
+  sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-    echo "🌐 Adding Flathub repository..."
-    sudo dnf install flatpak -y
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  echo "🎶 Installing multimedia codecs..."
+  sudo dnf group install -y multimedia
 
-    echo "📦 Installing COPR command-line tool..."
-    sudo dnf install -y 'dnf-command(copr)'
+  echo "🌐 Adding Flathub repository..."
+  sudo dnf install flatpak -y
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-    echo "✅ Basic system setup complete! Please **reboot your computer** to apply all changes."
-    ;;
-  *)
-    echo "Exiting without making changes."
-    exit 0
-    ;;
+  echo "📦 Installing COPR command-line tool..."
+  sudo dnf install -y 'dnf-command(copr)'
+
+  echo "✅ Basic system setup complete! Please **reboot your computer** to apply all changes."
+  ;;
+*)
+  echo "Exiting without making changes."
+  exit 0
+  ;;
 esac
+

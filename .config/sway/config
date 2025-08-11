@@ -11,7 +11,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term ghostty
 # Your preferred application launcher
 set $rofi_cmd rofi -terminal '$term'
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
@@ -29,7 +29,7 @@ default_floating_border none
 corner_radius 10
 # Set inner and outer gaps to add space between windows
 gaps inner 10
-gaps outer 10
+gaps outer 5
 # Enable blur effects
 blur enable
 blur_radius 5
