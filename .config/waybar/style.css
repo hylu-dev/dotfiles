@@ -1,0 +1,95 @@
+/* ~/.config/waybar/style.css */
+/*
+ * This CSS file styles the Waybar for a clean, modern look.
+ * It uses a dark theme with rounded corners and a few subtle colors.
+ * The Font Awesome Free font is used for the icons. You may need to
+ * install a font that provides these glyphs.
+ */
+
+/* General Waybar style */
+* {
+    border: none;
+    font-family: Inter, Font Awesome;
+    font-size: 14px;
+    font-weight: normal;
+    min-height: 20px;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 30, 0.85);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Module styling */
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+    border-radius: 0;
+}
+
+#workspaces button.active {
+    background-color: #5d5d5d;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background-color: #3b3b3b;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#mode {
+    background-color: #64727d;
+    padding: 0 10px;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#pulseaudio,
+#network,
+#tray {
+    padding: 0 10px;
+    margin: 0 5px;
+    background-color: #2e2e2e;
+    border-radius: 5px;
+}
+
+/* Specific module colors */
+#clock {
+    color: #8c8c8c;
+}
+
+#battery {
+    color: #4CAF50; /* Green */
+}
+#battery.charging {
+    color: #FFC107; /* Amber */
+}
+#battery.critical {
+    color: #F44336; /* Red */
+}
+
+#cpu {
+    color: #2196F3; /* Blue */
+}
+
+#memory {
+    color: #9C27B0; /* Purple */
+}
+
+#pulseaudio {
+    color: #E91E63; /* Pink */
+}
+
+#network {
+    color: #00BCD4; /* Cyan */
+}
+

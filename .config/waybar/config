@@ -1,0 +1,79 @@
+// ~/.config/waybar/config
+//
+// This JSON file defines the modules that will be displayed on the Waybar
+// and their arrangement. This updated version places the bar at the top.
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "custom/separator",
+        "clock"
+    ],
+    "modules-right": [
+        "custom/separator",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "battery",
+        "tray"
+    ],
+    "sway/workspaces": {
+        "format": " {icon}",
+        "on-click": "activate"
+    },
+    "sway/mode": {
+        "format": "<b>{}</b>"
+    },
+    "custom/separator": {
+        "format": " | ",
+        "tooltip": false
+    },
+    "clock": {
+        "tooltip-format": "<small>{:%Y-%m-%d}</small>",
+        "format-alt": "{:%a, %b %d %I:%M %p}",
+        "format": "{:%I:%M %p}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "tooltip-format": "{volume}%"
+    },
+    "battery": {
+        "states": {
+            "good": 90,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": " {used}GiB",
+        "tooltip": true
+    },
+    "network": {
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected"
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    }
+}
+
