@@ -24,7 +24,6 @@ case "$confirm" in
 
     PACKAGES=(
       curl
-      git
       bat
       eza
       tldr
@@ -32,13 +31,16 @@ case "$confirm" in
       fastfetch
       fzf
       xclip
+      ghostty
       neovim
       cowsay
       fortune
       cmatrix
     )
 
-    dnf copr enable alternateved/
+    dnf copr enable -y dejan/lazygit
+    dnf copr enable -y scottames/ghostty
+    dnf copr enable -y dturner/eza
 
     echo "📦 Installing core utilities and development tools..."
     for package in "${PACKAGES[@]}"; do
@@ -54,10 +56,6 @@ case "$confirm" in
 
     echo "🔧 Installing Oh My Posh..."
     curl -s https://ohmyposh.dev/install.sh | bash -s
-
-    echo "🔧 Installing Lazygit via COPR..."
-    sudo dnf copr enable -y atim/lazygit
-    sudo dnf install -y lazygit
 
     echo "🎉 Package setup complete! Please open a new terminal or run 'source ~/.bashrc' to apply changes."
     ;;
