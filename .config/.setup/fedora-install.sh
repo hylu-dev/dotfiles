@@ -33,6 +33,7 @@ case "$confirm" in
       xclip
       ghostty
       neovim
+      btrfs-assistant
       cowsay
       fortune
       cmatrix
