@@ -32,7 +32,7 @@ gaps inner 10
 gaps outer 5
 # Enable blur effects
 blur enable
-blur_radius 5
+blur_radius 10
 blur_passes 1 
 
 ### Input configuration
@@ -45,6 +45,12 @@ blur_passes 1
 #    natural_scroll enabled
 #    middle_emulation enabled
 # }
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+  }
 
 ### Key bindings
 #

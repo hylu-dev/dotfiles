@@ -41,3 +41,5 @@ font-size = 13
 
 adjust-cell-width = 0
 adjust-cell-height = 20%
+
+confirm-close-surface = false
