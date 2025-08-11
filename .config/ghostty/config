@@ -32,7 +32,7 @@ clipboard-read = "allow"
 clipboard-paste-protection = false
 
 ## Background
-background-opacity = 0.95
+background-opacity = 0.8
 
 ## Theme
 theme = Atom
