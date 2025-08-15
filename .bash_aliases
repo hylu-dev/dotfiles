@@ -16,9 +16,6 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # alias to check for pop updates
 alias pop='pop-upgrade release update'
 
-# alias for bat
-alias bat='batcat'
-
 # clipboard
 alias clip='xclip -selection clipboard <'
 
@@ -28,8 +25,8 @@ alias df='df -BG'
 # zoxide alias
 cd() {
   if [ -z "$1" ]; then # If no argument is provided
-    cd ~                # Go to the home directory
+    cd ~               # Go to the home directory
   else
-    z "$@"              # Otherwise, use zoxide's 'z' command
+    z "$@" # Otherwise, use zoxide's 'z' command
   fi
 }
