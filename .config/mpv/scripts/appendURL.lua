@@ -1,81 +1,100 @@
--- appendurl - Tsubajashi
+-- Set a global variable to store the detected clipboard tool
+local clipboard_tool = nil
+local utils = require("mp.utils")
+local msg = require("mp.msg")
 
-local platform = nil --set to 'linux', 'windows' or 'macos' to override automatic assign
-
-if not platform then
-  local o = {}
-  if mp.get_property_native('options/vo-mmcss-profile', o) ~= o then
-    platform = 'windows'
-  elseif mp.get_property_native('options/input-app-events', o) ~= o then
-    platform = 'macos'
-  else
-    platform = 'linux'
-  end
+-- Function to check for a command's existence
+local function command_exists(cmd)
+	local res = utils.subprocess({ args = { "which", cmd }, capture_stdout = true })
+	return res.status == 0 and res.stdout and res.stdout:match(".%S+")
 end
 
-local utils = require 'mp.utils'
-local msg = require 'mp.msg'
-
---main function
-function append(primaryselect)
-  local clipboard = get_clipboard(primaryselect or false)
-  if clipboard then
-    mp.commandv("loadfile", clipboard, "append-play")
-    mp.osd_message("URL appended: "..clipboard)
-    msg.info("URL appended: "..clipboard)
-  end
+-- Function to detect the appropriate clipboard tool
+local function detect_clipboard_tool()
+	if command_exists("wl-paste") then
+		return "wl-paste"
+	elseif command_exists("xclip") then
+		return "xclip"
+	elseif command_exists("pbpaste") then
+		return "pbpaste"
+	elseif command_exists("powershell") then
+		return "powershell"
+	else
+		return nil
+	end
 end
 
---handles the subprocess response table and return clipboard if it was a success
-function handleres(res, args, primary)
-  if not res.error and res.status == 0 then
-      return res.stdout
-  else
-    --if clipboard failed try primary selection
-    if platform=='linux' and not primary then
-      append(true)
-      return nil
-    end
-    msg.error("There was an error getting "..platform.." clipboard: ")
-    msg.error("  Status: "..(res.status or ""))
-    msg.error("  Error: "..(res.error or ""))
-    msg.error("  stdout: "..(res.stdout or ""))
-    msg.error("args: "..utils.to_string(args))
-    return nil
-  end
+-- Initialize the clipboard_tool once
+clipboard_tool = detect_clipboard_tool()
+
+-- Main function to paste and append the URL
+function paste_and_append()
+	local clipboard_content = get_clipboard_content()
+	if clipboard_content and clipboard_content ~= "" then
+		mp.commandv("loadfile", clipboard_content, "append-play")
+		mp.osd_message("URL appended: " .. clipboard_content)
+		msg.info("URL appended: " .. clipboard_content)
+	else
+		mp.osd_message("Clipboard is empty or not a valid URL")
+		msg.warn("Clipboard is empty or could not be read.")
+	end
 end
 
-function get_clipboard(primary) 
-  if platform == 'linux' then
-    local args = { 'xclip', '-selection', primary and 'primary' or 'clipboard', '-out' }
-    return handleres(utils.subprocess({ args = args }), args, primary)
-  elseif platform == 'windows' then
-    local args = {
-      'powershell', '-NoProfile', '-Command', [[& {
-        Trap {
-          Write-Error -ErrorRecord $_
-          Exit 1
-        }
-
-        $clip = ""
-        if (Get-Command "Get-Clipboard" -errorAction SilentlyContinue) {
-          $clip = Get-Clipboard -Raw -Format Text -TextFormatType UnicodeText
-        } else {
-          Add-Type -AssemblyName PresentationCore
-          $clip = [Windows.Clipboard]::GetText()
-        }
-
-        $clip = $clip -Replace "`r",""
-        $u8clip = [System.Text.Encoding]::UTF8.GetBytes($clip)
-        [Console]::OpenStandardOutput().Write($u8clip, 0, $u8clip.Length)
-      }]]
-    }
-    return handleres(utils.subprocess({ args =  args }), args)
-  elseif platform == 'macos' then
-    local args = { 'pbpaste' }
-    return handleres(utils.subprocess({ args = args }), args)
-  end
-  return nil
+-- Handles the subprocess response table and returns the clipboard content if successful
+local function handle_response(res, args)
+	if not res.error and res.status == 0 then
+		-- Remove any leading/trailing whitespace
+		local content = res.stdout:match("^%s*(.-)%s*$")
+		return content
+	else
+		msg.error("Failed to get clipboard content.")
+		msg.error("  Status: " .. (res.status or "nil"))
+		msg.error("  Error: " .. (res.error or "nil"))
+		msg.error("  stdout: " .. (res.stdout or "nil"))
+		msg.error("  Args: " .. utils.to_string(args))
+		return nil
+	end
 end
 
-mp.add_key_binding("ctrl+v", "appendURL", append)
+-- Function to get the clipboard content based on the detected tool
+local function get_clipboard_content()
+	if not clipboard_tool then
+		msg.error("No compatible clipboard tool found (wl-paste, xclip, pbpaste, or powershell).")
+		return nil
+	end
+
+	if clipboard_tool == "wl-paste" then
+		local args = { "wl-paste", "--no-newline" }
+		return handle_response(utils.subprocess({ args = args }), args)
+	elseif clipboard_tool == "xclip" then
+		local args = { "xclip", "-selection", "clipboard", "-out" }
+		return handle_response(utils.subprocess({ args = args }), args)
+	elseif clipboard_tool == "pbpaste" then
+		local args = { "pbpaste" }
+		return handle_response(utils.subprocess({ args = args }), args)
+	elseif clipboard_tool == "powershell" then
+		local args = {
+			"powershell",
+			"-NoProfile",
+			"-Command",
+			[[& {
+                Trap { Write-Error -ErrorRecord $_; Exit 1 }
+                $clip = "";
+                if (Get-Command "Get-Clipboard" -errorAction SilentlyContinue) {
+                    $clip = Get-Clipboard -Raw -Format Text -TextFormatType UnicodeText
+                } else {
+                    Add-Type -AssemblyName PresentationCore;
+                    $clip = [Windows.Clipboard]::GetText()
+                }
+                $clip = $clip -Replace "`r","";
+                $u8clip = [System.Text.Encoding]::UTF8.GetBytes($clip);
+                [Console]::OpenStandardOutput().Write($u8clip, 0, $u8clip.Length);
+            }]],
+		}
+		return handle_response(utils.subprocess({ args = args }), args)
+	end
+	return nil
+end
+
+-- Binds Ctrl+v to the paste_and_append function
+mp.add_key_binding("Ctrl+v", "paste-and-append", paste_and_append)
