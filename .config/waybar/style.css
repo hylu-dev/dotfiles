@@ -1,7 +1,6 @@
 * {
     border: none;
     border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: JetBrainsMono NF;
     min-height: 20px;
 }
@@ -14,193 +13,116 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
+/* Workspaces */
 #workspaces {
     margin-right: 8px;
     border-radius: 10px;
-    transition: none;
-    background: #383c4a;
+    background: #2b2f3a;
 }
 
 #workspaces button {
-    transition: none;
-    color: #7c818c;
+    color: #9aa0aa;
     background: transparent;
     padding: 5px;
     font-size: 18px;
+    border-radius: 10px; /* Keep rounded corners */
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
 #workspaces button.persistent {
-    color: #7c818c;
     font-size: 12px;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    border-radius: inherit;
-    color: #383c4a;
-    background: #7c818c;
+    color: #2b2f3a;
+    background: #81a1c1;
+    border-radius: 10px; /* Preserve rounding */
 }
 
 #workspaces button.focused {
-    color: white;
+    color: #e4e7ed;
+}
+
+/* Grouped module styles */
+#language, #keyboard-state, #custom-pacman, #custom-mail,
+#mode, #clock, #custom-weather, #pulseaudio, #custom-mem,
+#temperature, #backlight, #battery, #tray {
+    color: #e4e7ed;
+    background: #2b2f3a;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
 #language {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    border-radius: 10px 0 0 10px;
+    padding: 0 8px 0 16px;
 }
 
 #keyboard-state {
+    border-radius: 0 10px 10px 0;
+    padding: 0 16px 0 0;
     margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
 }
 
 #custom-pacman {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    border-radius: 10px 0 0 10px;
+    padding: 0 8px 0 16px;
 }
 
 #custom-mail {
+    border-radius: 0 10px 10px 0;
+    padding: 0 16px 0 0;
     margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
 }
 
 #mode {
-    padding-left: 16px;
-    padding-right: 16px;
     border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    padding: 0 16px;
 }
 
 #clock {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    border-radius: 10px 0 0 10px;
+    padding: 0 16px;
 }
 
 #custom-weather {
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    border-radius: 0 10px 10px 0;
+    padding: 0 16px;
 }
 
-#pulseaudio {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
+#pulseaudio, #custom-mem, #temperature, #backlight, #battery, #tray {
     border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    padding: 0 16px;
+    margin-right: 8px;
 }
 
+/* Special states */
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
-}
-
-#custom-mem {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#temperature {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    background-color: #4c566a;
+    color: #d8dee9;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#backlight {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#battery {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    background-color: #f7768e;
 }
 
 #battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
+    background-color: #26a65b;
 }
 
 #battery.warning:not(.charging) {
     background-color: #ffbe61;
-    color: black;
+    color: #000;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#tray {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    background-color: #f7768e;
+    animation: blink 0.5s linear infinite alternate;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: #e4e7ed;
+        color: #000;
     }
 }
+
