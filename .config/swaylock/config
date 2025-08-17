@@ -1,7 +1,7 @@
 image=$HOME/Pictures/wallpapers/nord-space.png
 scaling=fill
 indicator-radius=120
-indicator-thickness=10
+indicator-thickness=20
 font=JetBrainsMono NF ExtraBold
 font-size=32
 

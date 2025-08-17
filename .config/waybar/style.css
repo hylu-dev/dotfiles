@@ -1,3 +1,4 @@
+/* Catppuccin Mocha Dark Waybar */
 * {
     border: none;
     border-radius: 0;
@@ -17,15 +18,15 @@ window#waybar.hidden {
 #workspaces {
     margin-right: 8px;
     border-radius: 10px;
-    background: #2b2f3a;
+    background: #11111b; /* crust */
 }
 
 #workspaces button {
-    color: #9aa0aa;
+    color: #a6adc8; /* subtext0 */
     background: transparent;
     padding: 5px;
     font-size: 18px;
-    border-radius: 10px; /* Keep rounded corners */
+    border-radius: 10px;
     transition: background 0.15s ease, color 0.15s ease;
 }
 
@@ -34,21 +35,21 @@ window#waybar.hidden {
 }
 
 #workspaces button:hover {
-    color: #2b2f3a;
-    background: #81a1c1;
-    border-radius: 10px; /* Preserve rounding */
+    color: #1e1e2e; /* base */
+    background: #89b4fa; /* blue */
+    border-radius: 10px;
 }
 
 #workspaces button.focused {
-    color: #e4e7ed;
+    color: #cdd6f4; /* text */
 }
 
 /* Grouped module styles */
 #language, #keyboard-state, #custom-pacman, #custom-mail,
 #mode, #clock, #custom-weather, #pulseaudio, #custom-mem,
 #temperature, #backlight, #battery, #tray {
-    color: #e4e7ed;
-    background: #2b2f3a;
+    color: #cdd6f4; /* text */
+    background: #11111b; /* crust */
     transition: background 0.15s ease, color 0.15s ease;
 }
 
@@ -97,32 +98,32 @@ window#waybar.hidden {
 
 /* Special states */
 #pulseaudio.muted {
-    background-color: #4c566a;
-    color: #d8dee9;
+    background-color: #45475a; /* surface1 */
+    color: #cdd6f4; /* text */
 }
 
 #temperature.critical {
-    background-color: #f7768e;
+    background-color: #f38ba8; /* red */
 }
 
 #battery.charging {
-    background-color: #26a65b;
+    background-color: #a6e3a1; /* green */
+    color: black;
 }
 
 #battery.warning:not(.charging) {
-    background-color: #ffbe61;
-    color: #000;
+    background-color: #f9e2af; /* yellow */
+    color: #1e1e2e; /* base */
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f7768e;
+    background-color: #f38ba8; /* red */
     animation: blink 0.5s linear infinite alternate;
 }
 
 @keyframes blink {
     to {
-        background-color: #e4e7ed;
-        color: #000;
+        background-color: #cdd6f4; /* text */
+        color: #1e1e2e; /* base */
     }
 }
-
