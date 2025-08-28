@@ -22,6 +22,7 @@ output * bg $HOME/Pictures/wallpapers/night-study.jpeg fill
 
 # SwayFX Visuals
 # Remove title bars and window borders
+for_window [class=".*"] opacity 0.9
 default_border pixel 2
 default_floating_border none
 # Enable rounded corners with a radius of 10 pixels
@@ -32,7 +33,7 @@ gaps outer 5
 # Enable blur effects
 blur enable
 blur_radius 10
-blur_passes 1 
+blur_passes 2
 
 ### Input configuration
 #
