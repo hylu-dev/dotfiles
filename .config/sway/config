@@ -15,6 +15,9 @@ set $term ghostty
 set $rofi_cmd rofi -terminal '$term'
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
+# Stop sleep while in fullscreen video
+for_window [class="^.*"] inhibit_idle fullscreen
+
 ### Outputs and Appearance
 #
 # Set default wallpaper
@@ -28,8 +31,9 @@ default_floating_border none
 # Enable rounded corners with a radius of 10 pixels
 corner_radius 10
 # Set inner and outer gaps to add space between windows
-gaps inner 10
-gaps outer 5
+gaps inner 5
+gaps outer 0
+gaps top 0
 # Enable blur effects
 blur enable
 blur_radius 10
