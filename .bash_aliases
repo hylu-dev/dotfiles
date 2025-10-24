@@ -22,6 +22,9 @@ alias clip='xclip -selection clipboard <'
 # df use gigabytes
 alias df='df -BG'
 
+# fzf alias
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
+
 # zoxide alias
 cd() {
   if [ -z "$1" ]; then # If no argument is provided

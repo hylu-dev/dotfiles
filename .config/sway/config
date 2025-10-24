@@ -62,7 +62,7 @@ input "type:touchpad" {
 
 ### Key bindings
 #
-# Basics
+# Basics<D-S>
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
@@ -140,6 +140,38 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
+# Toggle Waybar visibility with Super+o
+bindsym $mod+Shift+o exec killall -SIGUSR1 waybar
+
 # Include other config files
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+# Grimshot Overrides
+# 1. Screenshot to Clipboard with Preview (Ctrl+Shift+Print)
+# Creates temp file, captures area, copies to clipboard, sends notification, cleans up.
+bindsym Ctrl+Shift+Print exec sh -c 'TEMP_FILE="$(mktemp --suffix=.png)"; grim -g "$(slurp)" "$TEMP_FILE" && { cat "$TEMP_FILE" | wl-copy; notify-send "Screenshot Copied" "Copied to clipboard." -i "$TEMP_FILE"; sleep 0.1; rm "$TEMP_FILE"; } || notify-send "Cancelled" "No area selected." -u low'
+
+# 2. Toggle Screen Recording (Mod+Shift+r) - Now records to .webm
+# Logic: checks if wf-recorder is running, otherwise prompts for area and starts recording to WebM.
+bindsym $mod+Shift+r exec sh -c 'FILENAME_TEMP_PATH="/tmp/wf-recorder-file.txt"; \
+if pgrep "wf-recorder" > /dev/null; then \
+    pkill -SIGINT wf-recorder; \
+    STOPPED_FILE=$(cat "$FILENAME_TEMP_PATH" 2>/dev/null); \
+    notify-send "Recording Stopped" "Saved to: $STOPPED_FILE" -u normal -h string:x-dunst-stack-tag:wf-recording -t 5000; \
+    rm -f "$FILENAME_TEMP_PATH"; \
+else \
+    RECORDING_DIR="$HOME/Videos/Recorders"; \
+    mkdir -p "$RECORDING_DIR"; \
+    FILENAME="$RECORDING_DIR/recording-$(date +%Y%m%d-%H%M%S).webm"; \
+    SELECTION=$(slurp); \
+    if [ -n "$SELECTION" ]; then \
+        echo "$FILENAME" > "$FILENAME_TEMP_PATH"; \
+        \
+        (wf-recorder -g "$SELECTION" -f "$FILENAME") & \
+        \
+        notify-send "RECORDING LIVE" "Area is being recorded." -i media-record -u critical -h string:x-dunst-stack-tag:wf-recording -t 0; \
+    else \
+        notify-send "Recording Cancelled" "No area was selected." -u low -a "wf-recorder"; \
+    fi; \
+fi'
 

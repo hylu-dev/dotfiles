@@ -9,7 +9,6 @@
     "modules-center": ["clock", "custom/weather"],
     "modules-right": ["pulseaudio", "custom/mem", "backlight", "battery", "tray"],
 
-
     //***************************
     //*  Modules configuration  *
     //***************************

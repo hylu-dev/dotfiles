@@ -1,3 +1,8 @@
+# Exit for non-interactive sessions
+if [[ -z "$PS1" ]]; then
+  return
+fi
+
 # ~/.bashrc: Executed for interactive non-login shells.
 
 # Set history control to ignore duplicates and lines starting with a space
@@ -70,3 +75,4 @@ fastfetch
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
