@@ -2,10 +2,11 @@
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 30, // Waybar height (to be removed for auto height)
+
     "margin": "5 0 0 5",
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/language", "keyboard-state", "custom/pacman", "custom/mail", "sway/mode"],
+    "modules-left": ["hyprland/workspaces", "hyprland/language", "keyboard-state", "custom/pacman", "custom/mail"],
     "modules-center": ["clock", "custom/weather"],
     "modules-right": ["pulseaudio", "custom/mem", "backlight", "battery", "tray"],
 
@@ -13,34 +14,21 @@
     //*  Modules configuration  *
     //***************************
 
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": ""
         },
+        "sort-by-number": true
     },
 
-    "sway/language": {
+    "hyprland/language": {
         "format": "{} ",
 	"min-length": 5,
 	"tooltip": false
-    },
-
-    "keyboard-state": {
-        //"numlock": true,
-        "capslock": true,
-        "format": "{name} {icon} ",
-        "format-icons": {
-            "locked": " ",
-            "unlocked": ""
-        },
-    },
-
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
     },
 
     "clock": {

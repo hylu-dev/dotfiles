@@ -3,7 +3,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: JetBrainsMono NF;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif;
     min-height: 20px;
 }
 
@@ -20,6 +20,7 @@ window#waybar.hidden {
     margin-right: 8px;
     border-radius: 10px;
     background: #1e1e2e; /* base */
+    padding: 0 10px;
 }
 
 #workspaces button {
@@ -55,24 +56,26 @@ window#waybar.hidden {
 }
 
 #language {
-    border-radius: 10px 0 0 10px;
-    padding: 0 8px 0 16px;
+    border-radius: 10px;
+    padding: 0 16px;
+    margin-right: 8px;
 }
 
 #keyboard-state {
-    border-radius: 0 10px 10px 0;
-    padding: 0 16px 0 0;
+    border-radius: 10px;
+    padding: 0 16px;
     margin-right: 8px;
 }
 
 #custom-pacman {
-    border-radius: 10px 0 0 10px;
-    padding: 0 8px 0 16px;
+    border-radius: 10px;
+    padding: 0 16px;
+    margin-right: 8px;
 }
 
 #custom-mail {
-    border-radius: 0 10px 10px 0;
-    padding: 0 16px 0 0;
+    border-radius: 10px;
+    padding: 0 16px;
     margin-right: 8px;
 }
 
@@ -82,14 +85,16 @@ window#waybar.hidden {
 }
 
 #clock {
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
     padding: 0 16px;
+    margin-right: 8px;
     background: #1e1e2e; /* base for emphasis */
 }
 
 #custom-weather {
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px;
     padding: 0 16px;
+    margin-right: 8px;
 }
 
 #pulseaudio, #custom-mem, #temperature, #backlight, #battery, #tray {
