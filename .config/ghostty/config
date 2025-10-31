@@ -1,3 +1,5 @@
+term = xterm-kitty
+
 ## Keybinds
 keybind = cmd+k=text:\x01\x54
 keybind = cmd+1=text:\x011

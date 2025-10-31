@@ -21,7 +21,11 @@ for_window [class="^.*"] inhibit_idle fullscreen
 ### Outputs and Appearance
 #
 # Set default wallpaper
-output * bg $HOME/Pictures/wallpapers/night-study.jpeg fill
+exec swww-daemon
+swaybg_command - # Disable for separate bg manager
+# output * bg $HOME/Pictures/wallpapers/night-study.jpeg fill
+for_window [app_id="waypaper"] floating enable
+for_window [app_id="thunar"] floating enable
 
 # SwayFX Visuals
 # Remove title bars and window borders
@@ -139,6 +143,9 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+# Scripts 
+bindsym $mod+Tab exec ~/scripts/next_wallpaper.sh
 
 # Toggle Waybar visibility with Super+o
 bindsym $mod+Shift+o exec killall -SIGUSR1 waybar
