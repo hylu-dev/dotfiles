@@ -20,7 +20,8 @@ window#waybar.hidden {
     margin-right: 8px;
     border-radius: 10px;
     background: #1e1e2e; /* base */
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 14px; /* balance out icon font spacing */
 }
 
 #workspaces button {
