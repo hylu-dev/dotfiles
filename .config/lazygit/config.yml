@@ -15,6 +15,9 @@ customCommands:
     command: 'git log develop..HEAD >> diff.txt'
     description: 'View current branch diff in Vim'
     loadingText: 'Loading Diff'
+os:
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim +{{line}} {{filename}}'
 gui:
   expandFocusedSidePanel: true
   expandedSidePanelWeight: 2
@@ -44,6 +47,6 @@ gui:
   authorColors:
     '*': '#babbf1'
 git:
-  paging:
-    colorArg: always
-    pager: delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
