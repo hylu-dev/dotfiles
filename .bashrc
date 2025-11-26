@@ -78,3 +78,6 @@ export NVM_DIR="$HOME/.nvm"
 
 
 export PATH=$PATH:/home/hylu/.spicetify
+
+# Docker go path
+export PATH=$PATH:$(go env GOPATH)/bin
