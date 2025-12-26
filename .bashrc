@@ -5,6 +5,10 @@ fi
 
 # ~/.bashrc: Executed for interactive non-login shells.
 
+# Set the default editor to nvim
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 # Set history control to ignore duplicates and lines starting with a space
 HISTCONTROL=ignoreboth
 
@@ -81,3 +85,6 @@ export PATH=$PATH:/home/hylu/.spicetify
 
 # Docker go path
 export PATH=$PATH:$(go env GOPATH)/bin
+
+# For flutter chrome debugging
+export CHROME_EXECUTABLE="/usr/bin/chromium-browser"
