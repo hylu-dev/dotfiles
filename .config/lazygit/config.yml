@@ -1,0 +1,52 @@
+notARepository: 'skip'
+disableStartupPopups: true
+customCommands:
+  - key: 'F'
+    context: 'files'
+    command: 'git fetch --all --no-write-fetch-head --prune'
+    description: 'Fetch and prune'
+    loadingText: 'Fetching'
+  - key: 'O'
+    context: 'status'
+    command: 'open .'
+    description: 'Open repository in the file explorer'
+  - key: 'V'
+    context: 'files'
+    command: 'git log develop..HEAD >> diff.txt'
+    description: 'View current branch diff in Vim'
+    loadingText: 'Loading Diff'
+os:
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim +{{line}} {{filename}}'
+gui:
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 2
+  scrollHeight: 4
+  showBottomLine: false
+  disableForcePushing: true
+  theme:
+    activeBorderColor:
+      - '#e78284'
+      - bold
+    inactiveBorderColor:
+      - '#8592BD'
+    optionsTextColor:
+      - '#8caaee'
+    selectedLineBgColor:
+      - '#414559'
+    cherryPickedCommitBgColor:
+      - '#51576d'
+    cherryPickedCommitFgColor:
+      - '#e78284'
+    unstagedChangesColor:
+      - '#e78284'
+    defaultFgColor:
+      - '#cdcdcd'
+    searchingActiveBorderColor:
+      - '#e5c890'
+  authorColors:
+    '*': '#babbf1'
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
