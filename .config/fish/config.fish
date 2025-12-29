@@ -3,6 +3,7 @@ if status is-interactive
     set -gx EDITOR nvim
     set -gx VISUAL nvim
     set -gx CHROME_EXECUTABLE /usr/bin/chromium
+    set -g fish_greeting # disable greeting message
 
     # Path Additions
     if test -d "$HOME/.local/bin"

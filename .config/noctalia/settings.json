@@ -25,6 +25,7 @@
         "volumeStep": 5
     },
     "bar": {
+        "backgroundOpacity": 0.93,
         "capsuleOpacity": 1,
         "density": "compact",
         "exclusive": true,
@@ -37,7 +38,7 @@
         "position": "top",
         "showCapsule": true,
         "showOutline": false,
-        "transparent": false,
+        "useSeparateOpacity": false,
         "widgets": {
             "center": [
                 {
@@ -50,6 +51,10 @@
                     "usePrimaryColor": true
                 },
                 {
+                    "defaultSettings": {
+                        "hideBackground": false,
+                        "minimumThreshold": 10
+                    },
                     "id": "plugin:catwalk"
                 },
                 {
@@ -74,11 +79,13 @@
                     "colorizeIcons": false,
                     "enableScrollWheel": true,
                     "followFocusedScreen": false,
+                    "groupedBorderOpacity": 1,
                     "hideUnoccupied": false,
                     "id": "Workspace",
                     "labelMode": "index",
                     "showApplications": false,
-                    "showLabelsOnlyWhenOccupied": true
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
                 },
                 {
                     "compactMode": true,
@@ -449,7 +456,7 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 33,
+    "settingsVersion": 35,
     "systemMonitor": {
         "cpuCriticalThreshold": 90,
         "cpuPollingInterval": 3000,
