@@ -1,0 +1,7 @@
+antigravity
+git-credential-manager-bin
+noctalia-shell-git
+paru
+paru-debug
+quickshell-git
+ttf-iosevka-term
