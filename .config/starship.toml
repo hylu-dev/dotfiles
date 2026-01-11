@@ -63,3 +63,7 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1e1a27"
 format = '[[  $time ](fg:#ffffff bg:#1e1a27)]($style)'
+
+[character]
+success_symbol = "[❯](bold #e9a1b4)"
+error_symbol = "[❯](bold #e9a1b4)"

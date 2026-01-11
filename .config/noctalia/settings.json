@@ -1,12 +1,14 @@
 {
     "appLauncher": {
+        "autoPasteClipboard": false,
+        "clipboardWrapText": true,
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
         "enableClipPreview": true,
         "enableClipboardHistory": false,
         "iconMode": "tabler",
         "ignoreMouseInput": false,
-        "pinnedExecs": [
+        "pinnedApps": [
         ],
         "position": "center",
         "screenshotAnnotationTool": "",
@@ -15,11 +17,10 @@
         "sortByMostUsed": true,
         "terminalCommand": "xterm -e",
         "useApp2Unit": false,
-        "viewMode": "grid"
+        "viewMode": "list"
     },
     "audio": {
         "cavaFrameRate": 30,
-        "externalMixer": "pwvucontrol || pavucontrol",
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
@@ -33,13 +34,13 @@
         "density": "compact",
         "exclusive": true,
         "floating": false,
-        "marginHorizontal": 0.25,
-        "marginVertical": 0.25,
+        "marginHorizontal": 18,
+        "marginVertical": 7,
         "monitors": [
         ],
         "outerCorners": true,
         "position": "top",
-        "showCapsule": true,
+        "showCapsule": false,
         "showOutline": false,
         "useSeparateOpacity": false,
         "widgets": {
@@ -89,14 +90,6 @@
                     "id": "WallpaperSelector"
                 },
                 {
-                    "icon": "rocket",
-                    "id": "Launcher",
-                    "usePrimaryColor": false
-                },
-                {
-                    "id": "ScreenRecorder"
-                },
-                {
                     "compactMode": true,
                     "diskPath": "/",
                     "id": "SystemMonitor",
@@ -112,10 +105,15 @@
                     "usePrimaryColor": false
                 },
                 {
+                    "compactMode": false,
+                    "compactShowAlbumArt": true,
+                    "compactShowVisualizer": false,
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
                     "maxWidth": 145,
+                    "panelShowAlbumArt": true,
+                    "panelShowVisualizer": true,
                     "scrollingMode": "hover",
                     "showAlbumArt": false,
                     "showArtistFirst": true,
@@ -158,11 +156,13 @@
                 },
                 {
                     "displayMode": "onhover",
-                    "id": "Microphone"
+                    "id": "Microphone",
+                    "middleClickCommand": "pwvucontrol || pavucontrol"
                 },
                 {
                     "displayMode": "onhover",
-                    "id": "Volume"
+                    "id": "Volume",
+                    "middleClickCommand": "pwvucontrol || pavucontrol"
                 },
                 {
                     "id": "Spacer",
@@ -221,7 +221,6 @@
     },
     "colorSchemes": {
         "darkMode": true,
-        "generateTemplatesForPredefined": true,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "matugenSchemeType": "scheme-fruit-salad",
@@ -267,9 +266,6 @@
                     "id": "Bluetooth"
                 },
                 {
-                    "id": "ScreenRecorder"
-                },
-                {
                     "id": "WallpaperSelector"
                 }
             ],
@@ -308,9 +304,11 @@
         ],
         "onlySameOutput": true,
         "pinnedApps": [
-            "app.zen_browser.zen"
+            "app.zen_browser.zen",
+            "com.mitchellh.ghostty"
         ],
-        "pinnedStatic": false,
+        "pinnedStatic": true,
+        "position": "bottom",
         "size": 1
     },
     "general": {
@@ -332,6 +330,7 @@
         "shadowDirection": "bottom_right",
         "shadowOffsetX": 2,
         "shadowOffsetY": 3,
+        "showChangelogOnStartup": true,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true
@@ -348,6 +347,8 @@
     "location": {
         "analogClockInCalendar": false,
         "firstDayOfWeek": -1,
+        "hideWeatherCityName": false,
+        "hideWeatherTimezone": false,
         "name": "Toronto, ON",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
@@ -416,18 +417,6 @@
         ],
         "overlayLayer": true
     },
-    "screenRecorder": {
-        "audioCodec": "opus",
-        "audioSource": "default_output",
-        "colorRange": "full",
-        "copyToClipboard": false,
-        "directory": "/home/hylu/Videos",
-        "frameRate": 60,
-        "quality": "high",
-        "showCursor": true,
-        "videoCodec": "h264",
-        "videoSource": "portal"
-    },
     "sessionMenu": {
         "countdownDuration": 10000,
         "enableCountdown": true,
@@ -475,7 +464,7 @@
         "showHeader": true,
         "showNumberLabels": true
     },
-    "settingsVersion": 37,
+    "settingsVersion": 39,
     "systemMonitor": {
         "cpuCriticalThreshold": 90,
         "cpuPollingInterval": 3000,
@@ -525,16 +514,16 @@
         "walker": false,
         "wezterm": false,
         "yazi": true,
-        "zed": false,
-        "zenBrowser": false
+        "zed": true,
+        "zenBrowser": true
     },
     "ui": {
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "boxBorderEnabled": false,
-        "fontDefault": "JetBrainsMono Nerd Font",
+        "fontDefault": "CommitMono Nerd Font Propo",
         "fontDefaultScale": 0.9,
-        "fontFixed": "JetBrainsMono Nerd Font",
+        "fontFixed": "CommitMono Nerd Font Mono",
         "fontFixedScale": 0.9,
         "networkPanelView": "wifi",
         "panelBackgroundOpacity": 0.93,
