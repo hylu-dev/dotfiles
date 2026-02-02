@@ -390,6 +390,8 @@ binds {
 
     Mod+Comma { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
 
+    Mod+Shift+W hotkey-overlay-title="Change Wallpaper" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "random"; }
+
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }

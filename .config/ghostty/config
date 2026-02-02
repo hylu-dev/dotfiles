@@ -1,5 +1,6 @@
 
 ## Keybinds
+keybind = global:alt+space=toggle_quick_terminal
 keybind = cmd+k=text:\x01\x54
 keybind = cmd+1=text:\x011
 keybind = cmd+2=text:\x012
