@@ -15,7 +15,35 @@
         "mOutline": "#565064",
         "mShadow": "#1E1A27",
         "mHover": "#A692C3",
-        "mOnHover": "#2E2A37"
+        "mOnHover": "#2E2A37",
+        "terminal": {
+            "normal": {
+                "black": "#1E1A27",
+                "red": "#C392A6",
+                "green": "#8AAE7A",
+                "yellow": "#D5C78A",
+                "blue": "#7A8AAE",
+                "magenta": "#8F7AAE",
+                "cyan": "#7AAEB3",
+                "white": "#D8D2E9"
+            },
+            "bright": {
+                "black": "#565064",
+                "red": "#C392A6",
+                "green": "#8AAE7A",
+                "yellow": "#D5C78A",
+                "blue": "#7A8AAE",
+                "magenta": "#A692C3",
+                "cyan": "#7AAEB3",
+                "white": "#D8D2E9"
+            },
+            "foreground": "#D8D2E9",
+            "background": "#272331",
+            "selectionFg": "#D8D2E9",
+            "selectionBg": "#565064",
+            "cursorText": "#2E2A37",
+            "cursor": "#D8D2E9"
+        }
     },
     "light": {
         "mPrimary": "#7A6893",
@@ -33,6 +61,34 @@
         "mOutline": "#C2B8D3",
         "mShadow": "#D2C8E3",
         "mHover": "#937EB0",
-        "mOnHover": "#F2EFF7"
+        "mOnHover": "#F2EFF7",
+        "terminal": {
+            "normal": {
+                "black": "#E2DDE7",
+                "red": "#B07E93",
+                "green": "#68937A",
+                "yellow": "#B0A26E",
+                "blue": "#687A93",
+                "magenta": "#7A6893",
+                "cyan": "#689398",
+                "white": "#4A4557"
+            },
+            "bright": {
+                "black": "#C2B8D3",
+                "red": "#B07E93",
+                "green": "#68937A",
+                "yellow": "#B0A26E",
+                "blue": "#687A93",
+                "magenta": "#937EB0",
+                "cyan": "#689398",
+                "white": "#4A4557"
+            },
+            "foreground": "#4A4557",
+            "background": "#F2EFF7",
+            "selectionFg": "#4A4557",
+            "selectionBg": "#C2B8D3",
+            "cursorText": "#F2EFF7",
+            "cursor": "#4A4557"
+        }
     }
 }

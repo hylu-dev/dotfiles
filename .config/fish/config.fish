@@ -35,6 +35,11 @@ if status is-interactive
     alias df='df -BG'
     alias sd='cd ~; and cd (find * -type d | fzf)'
 
+    # Git Difftastic Abbreviations
+    abbr -a dlog 'git dlog'
+    abbr -a dshow 'git dshow'
+    abbr -a ddiff 'git ddiff'
+
     # Tool Initializations
     if type -q starship
         starship init fish | source
@@ -54,3 +59,5 @@ if status is-interactive
         fastfetch
     end
 end
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
