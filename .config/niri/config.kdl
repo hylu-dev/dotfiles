@@ -97,12 +97,6 @@ animations {
 }
 
 window-rule {
-    // Work around WezTerm initial configure sizing issue.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
-
-window-rule {
     // Open Firefox PiP windows as floating.
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
@@ -126,22 +120,9 @@ switch-events {
 
 binds {
     // "Mod" maps to Super on TTY sessions.
-
-    // Shell / Noctalia controls.
-    Mod+P { spawn "sh" "-c" "pkill hyprpicker || (color=$(hyprpicker -a) && notify-send -u low \"Hyprpicker\" \"Colour Picked: $color\" -t 1000)"; }
-
     Mod+Period { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
-
     Mod+Comma { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
-
-    Mod+Slash { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:assistant-panel" "toggle"; }
-
-    Mod+Print {
-        spawn "/home/hylu/scripts/toggle_record.sh";
-    }
-
-    Mod+Shift+W hotkey-overlay-title="Change Wallpaper" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "random"; }
-
+    Mod+Slash { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:screen-toolkit" "toggle"; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // App launchers.
