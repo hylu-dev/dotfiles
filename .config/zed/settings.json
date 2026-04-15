@@ -1,0 +1,42 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": true
+  },
+  "tabs": {
+    "git_status": true,
+    "file_icons": true,
+    "close_position": "left"
+  },
+  "vim_mode": true,
+  "format_on_save": "on",
+  "prettier": {
+    "allowed": true,
+  },
+  "icon_theme": "Catppuccin Frappé",
+  "agent": {
+    "default_model": {
+      "enable_thinking": true,
+      "provider": "openrouter",
+      "model": "google/gemma-4-26b-a4b-it:free",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+}

@@ -19,6 +19,7 @@ os:
   edit: 'nvim {{filename}}'
   editAtLine: 'nvim +{{line}} {{filename}}'
 gui:
+  sidePanelWidth: 0.5
   expandFocusedSidePanel: true
   expandedSidePanelWeight: 2
   scrollHeight: 4
