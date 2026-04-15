@@ -7,16 +7,23 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
+    },
+  },
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "tab_bar": {
-    "show_pinned_tabs_in_separate_row": true
+    "show_pinned_tabs_in_separate_row": true,
   },
   "tabs": {
     "git_status": true,
     "file_icons": true,
-    "close_position": "left"
+    "close_position": "left",
   },
   "vim_mode": true,
   "format_on_save": "on",
+  "relative_line_numbers": "enabled",
   "prettier": {
     "allowed": true,
   },

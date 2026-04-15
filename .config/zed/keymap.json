@@ -43,5 +43,10 @@
     "unbind": {
       "alt-shift-right": "editor::SelectLargerSyntaxNode"
     }
+  },
+  {
+    "bindings": {
+      "alt-shift-x": "editor::UnwrapSyntaxNode"
+    }
   }
 ]
