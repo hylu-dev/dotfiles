@@ -10,12 +10,15 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "One Dark",
   },
   "agent_servers": {
-    "opencode": {
-      "type": "registry",
+    "codex-acp": {
+      "type": "registry"
     },
+    "opencode": {
+      "type": "registry"
+    }
   },
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "tab_bar": {
@@ -35,7 +38,7 @@
   "icon_theme": {
     "mode": "dark",
     "light": "Catppuccin Frappé",
-    "dark": "Catppuccin Frappé"
+    "dark": "Material Icon Theme",
   },
   "agent": {
     "default_model": {
