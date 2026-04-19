@@ -65,10 +65,17 @@ layout {
     }
 
     struts {}
+
+    tab-indicator {
+        gap 0
+        corner-radius 8
+        gaps-between-tabs 8
+    }
 }
 
 spawn-at-startup "hypridle"
-spawn-at-startup "qs" "-c" "noctalia-shell"
+// spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "env" "QT_QPA_PLATFORMTHEME=gtk3" "qs" "-c" "noctalia-shell"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 
 // Session hints for desktop portals / Wayland tooling.

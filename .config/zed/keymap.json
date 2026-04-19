@@ -15,38 +15,44 @@
     },
   },
   {
-    "context": "Editor && vim_mode == insert",
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
     "bindings": {
-      // "j k": "vim::NormalBefore"
+      "ctrl-shift-w": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual || vim_mode == insert)",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
     },
   },
   {
     "context": "Editor",
     "bindings": {
-      "alt-shift-s": "editor::SelectSmallerSyntaxNode"
-    }
+      "alt-shift-s": "editor::SelectSmallerSyntaxNode",
+    },
   },
   {
     "context": "Editor",
     "unbind": {
-      "alt-shift-left": "editor::SelectSmallerSyntaxNode"
-    }
+      "alt-shift-left": "editor::SelectSmallerSyntaxNode",
+    },
   },
   {
     "context": "Editor",
     "bindings": {
-      "alt-shift-a": "editor::SelectLargerSyntaxNode"
-    }
+      "alt-shift-a": "editor::SelectLargerSyntaxNode",
+    },
   },
   {
     "context": "Editor",
     "unbind": {
-      "alt-shift-right": "editor::SelectLargerSyntaxNode"
-    }
+      "alt-shift-right": "editor::SelectLargerSyntaxNode",
+    },
   },
   {
     "bindings": {
-      "alt-shift-x": "editor::UnwrapSyntaxNode"
-    }
-  }
+      "alt-shift-x": "editor::UnwrapSyntaxNode",
+    },
+  },
 ]
